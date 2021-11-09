@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import * as Styled from './app.styles';
 import pictures, { pictureNames } from './pictures';
 
-const preparedCards = [...pictureNames, ...pictureNames]
+const preparedCards = [
+  ...pictureNames,
+  ...pictureNames,
+  ...pictureNames,
+  ...pictureNames,
+]
   .map((item) => ({ word: item, id: Math.random() }))
   .sort((a, b) => a.id - b.id);
 
@@ -33,7 +38,7 @@ function App() {
     }
   };
   return (
-    <Styled.Container className='container'>
+    <Styled.Container>
       {preparedCards.map((card) => {
         if (gone.includes(card.id)) {
           return <Styled.Box className='box' key={card.id}></Styled.Box>;

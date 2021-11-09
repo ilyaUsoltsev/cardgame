@@ -6,6 +6,7 @@ import phone from './phone.jpeg';
 import sand from './sand.jpeg';
 import sky from './sky.jpeg';
 import soccer from './soccer.jpeg';
+import sun from './sun.jpeg';
 
 export const pictureNames = [
   'cat',
@@ -16,6 +17,7 @@ export const pictureNames = [
   'sand',
   'sky',
   'soccer',
+  'sun',
 ];
 
 export const pictures: Record<string, string> = {
@@ -27,6 +29,7 @@ export const pictures: Record<string, string> = {
   sand,
   sky,
   soccer,
+  sun,
 };
 
 export default pictures;
