@@ -45,10 +45,13 @@ function App() {
         }
         return (
           <Styled.Box className='box' key={card.id}>
-            <Styled.Cover onClick={() => onCardClick(card)} />
             <Styled.Face
               imgUrl={pictures[card.word]}
               visible={card.id === firstCard?.id || card.id === secondCard?.id}
+            />
+            <Styled.Cover
+              onClick={() => onCardClick(card)}
+              visible={card.id !== firstCard?.id && card.id !== secondCard?.id}
             />
           </Styled.Box>
         );
