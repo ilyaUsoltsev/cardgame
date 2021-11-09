@@ -20,4 +20,14 @@ export const Cover = styled.div`
   width: 100px;
   height: 100px;
   cursor: pointer;
+  position: absolute;
+`;
+
+export const Face = styled.div<{ imgUrl: string; visible: boolean }>`
+  background-image: ${(props) => `url(${props.imgUrl})`};
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  position: absolute;
+  visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
 `;
