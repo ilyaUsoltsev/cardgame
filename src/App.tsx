@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import * as Styled from './app.styles';
 import pictures, { pictureNames } from './pictures';
 
@@ -13,7 +13,8 @@ const preparedCards = [
 
 function App() {
   const gameOn = useRef(false);
-  const timeCount = useRef(0);
+  const [gameOver, setGameOver] = useState(false);
+  const timer = useRef<number>();
   const tries = useRef(0);
   const [time, setTime] = useState<number>(0);
   const [gone, setGone] = useState<number[]>([]);
@@ -25,15 +26,14 @@ function App() {
   >();
 
   useEffect(() => {
-    let intervalId: number;
     if (gameOn.current) {
-      intervalId = window.setInterval(() => {
-        timeCount.current++;
-        setTime(timeCount.current);
+      timer.current = window.setInterval(() => {
+        setTime((time) => time + 1);
       }, 1000);
     }
+
     return () => {
-      if (intervalId) clearInterval(intervalId);
+      clearInterval(timer.current);
     };
   }, [gameOn.current]);
 
@@ -49,6 +49,11 @@ function App() {
         setSecondCard(item);
         setTimeout(() => {
           if (firstCard.word === item.word) {
+            if (gone.length + 2 === preparedCards.length) {
+              setGameOver(true);
+              clearInterval(timer.current);
+              gameOn.current = false;
+            }
             setGone([...gone, item.id, firstCard.id]);
             setFirstCard(undefined);
             setSecondCard(undefined);
@@ -62,11 +67,26 @@ function App() {
     [firstCard, secondCard, gone]
   );
 
+  const startNewGame = () => {
+    tries.current = 0;
+    gameOn.current = true;
+    setGameOver(false);
+    setGone([]);
+    setTime(0);
+  };
+
   return (
     <>
       <h1>Card game</h1>
       <p>Time: {time}</p>
       <p>Moves: {tries.current}</p>
+      {gameOver && (
+        <h3>
+          You won in {time} seconds and {tries.current} moves!
+          <br />
+          <button onClick={startNewGame}>New game</button>
+        </h3>
+      )}
       <Styled.Container>
         {preparedCards.map((card) => {
           const isGone = gone.includes(card.id);
