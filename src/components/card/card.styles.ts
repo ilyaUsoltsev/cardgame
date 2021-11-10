@@ -1,20 +1,5 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
-  display: grid;
-  padding: 16px;
-  margin: 32px auto;
-  max-width: 700px;
-  row-gap: 10px;
-  grid-template-columns: repeat(6, 1fr);
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-`;
-
 const TRANSITION_DURATION = '0.35s';
 
 const CardDimensions = css`
