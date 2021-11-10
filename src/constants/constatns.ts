@@ -1,11 +1,11 @@
 export const pictureNames = [
   'cat',
   'dog',
-  //   'mood',
-  //   'moon',
-  //   'phone',
-  //   'sand',
-  //   'sky',
-  //   'soccer',
-  //   'sun',
+  'mood',
+  'moon',
+  'phone',
+  'sand',
+  'sky',
+  'soccer',
+  'sun',
 ];

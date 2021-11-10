@@ -17,7 +17,9 @@ const GameInfo: FC<IProps> = ({ time, moves, gameOver, onClick }) => {
         <h3>
           You won in {time} seconds and {moves} moves!
           <br />
-          <button onClick={onClick}>New game</button>
+          <button data-testid='new-game-button' onClick={onClick}>
+            New game
+          </button>
         </h3>
       )}
     </div>

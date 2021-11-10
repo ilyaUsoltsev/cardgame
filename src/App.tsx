@@ -76,7 +76,7 @@ function App() {
         gameOver={gameOver}
         time={time}
       />
-      <Styled.Container>
+      <Styled.Container data-testid='cards-container'>
         {cards.map((card) => (
           <Card
             key={card.id}
