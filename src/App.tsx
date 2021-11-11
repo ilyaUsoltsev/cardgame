@@ -15,13 +15,6 @@ function App() {
   const [secondCard, setSecondCard] = useState<ICard | undefined>();
   const [cards, setCards] = useState<ICard[]>([]);
 
-  useEffect(() => {
-    startNewGame();
-    return () => {
-      clearInterval(timer.current);
-    };
-  }, []);
-
   const shuffleCards = () => {
     setCards(prepareCards());
   };
@@ -36,6 +29,14 @@ function App() {
     setGone([]);
     setTime(0);
   }, []);
+
+  useEffect(() => {
+    startNewGame();
+    return () => {
+      clearInterval(timer.current);
+    };
+  }, [startNewGame]);
+
 
   const flipCards = useCallback(() => {
     setFirstCard(undefined);
