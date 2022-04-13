@@ -1,3 +1,7 @@
+# Test application - simple memo game
+
+https://cardgame-ashy.vercel.app/
+
 ## Install dependencies
 
 `npm install`
